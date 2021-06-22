@@ -40,6 +40,10 @@ app.post('/webhooks', function (req, res) {
     }
 });
 
+app.get('/', function (req, res) {
+    res.send('ping successful');
+})
+
 app.listen(3000, function () {
     console.log('Listening for webhooks on port 3000');
 
