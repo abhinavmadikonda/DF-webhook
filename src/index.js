@@ -33,8 +33,8 @@ const responsePayload1 = {
     ]
 }
 app.post('/webhooks', function (req, res) {
-    console.log('webhook route invoked');
     const { originalDetectIntentRequest: {payload} }  = req.body;
+    console.log('webhook route invoked with payload:'+req.body);
     if(payload.customPayload.customer === 'abhi'){
         res.send(responsePayload)
     } else {
@@ -43,7 +43,7 @@ app.post('/webhooks', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-    res.send('ping successful');
+    res.send('ping successfull');
 })
 
 app.listen(port, function () {
