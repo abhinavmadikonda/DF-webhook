@@ -1,6 +1,7 @@
 const express = require('express');
 const ngrok = require('ngrok')
 const app = express();
+const port = (process.env.PORT || 3000)
 
 // const port = sys.env.getOrElse("PORT","9000").toInt
 var bodyParser = require('body-parser');
@@ -44,7 +45,7 @@ app.get('/', function (req, res) {
     res.send('ping successful');
 })
 
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log('Listening for webhooks on port 3000');
 
     // start ngrok and create a tunnel to port 3000
