@@ -35,7 +35,7 @@ const responsePayload1 = {
 app.post('/webhooks', function (req, res) {
     console.log('webhook route invoked');
     const { originalDetectIntentRequest: {payload} }  = req.body;
-    if(payload.customer === 'abhi'){
+    if(payload.customPayload.customer === 'abhi'){
         res.send(responsePayload)
     } else {
         res.send(responsePayload1);
