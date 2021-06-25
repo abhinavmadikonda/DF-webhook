@@ -1,5 +1,5 @@
 const express = require('express');
-const ngrok = require('ngrok')
+// const ngrok = require('ngrok')
 const app = express();
 const port = (process.env.PORT || 3000)
 
@@ -35,7 +35,7 @@ const responsePayload1 = {
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    if(payload.customPayload.customer === 'abhi'){
+    if(payload.customer === 'abhi'){
         res.send(responsePayload)
     } else {
         res.send(responsePayload1);
