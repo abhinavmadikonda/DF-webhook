@@ -15,13 +15,24 @@ const responsePayload = {
         {
             "text": {
                 "text": [
-                    "Balance is 1245"
+                    "Balance is 4268"
                 ]
             }
         }
     ]
 }
 const responsePayload1 = {
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    "Balance is 88888"
+                ]
+            }
+        }
+    ]
+}
+const responsePayload2 = {
     "fulfillmentMessages": [
         {
             "text": {
@@ -35,10 +46,13 @@ const responsePayload1 = {
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    if(payload.customer === 'abhi'){
+    if(payload.customerId === 'abhi'){
         res.send(responsePayload)
-    } else {
+    } else if(payload.customerId === 'john') {
         res.send(responsePayload1);
+    } else {
+        res.send(responsePayload2);
+
     }
 });
 
