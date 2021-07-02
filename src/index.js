@@ -32,16 +32,20 @@ const responsePayload1 = {
         }
     ]
 }
-const responsePayload2 = {
-    "fulfillmentMessages": [
-        {
-            "text": {
-                "text": [
-                    "Balance is 0"
-                ]
-            }
-        }
-    ]
+// const responsePayload2 = {
+//     "fulfillmentMessages": [
+//         {
+//             "text": {
+//                 "text": [
+//                     "Balance is 0"
+//                 ]
+//             }
+//         }
+//     ]
+// }
+
+const fulfillmentText = {
+    "fulfillmentText": "testing fulfillment text"
 }
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
@@ -49,11 +53,11 @@ app.post('/webhooks', function (req, res) {
     const {firstName, phoneNumber ,address, age} = payload;
     console.log('abhinav log: '+ firstName + address)
     if(payload.customerId === 'abhi'){
-        res.send(responsePayload)
+        res.send(fulfillmentText)
     } else if(payload.customerId === 'john') {
-        res.send(responsePayload1);
+        res.send(fulfillmentText);
     } else {
-        res.send(responsePayload2);
+        res.send(fulfillmentText);
     }
 });
 
