@@ -45,7 +45,16 @@ const responsePayload1 = {
 // }
 
 const fulfillmentText = {
-    "fulfillmentText": "testing fulfillment text"
+    "fulfillmentText": "testing both",
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    "testing both"
+                ]
+            }
+        }
+    ]
 }
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
