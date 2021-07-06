@@ -83,8 +83,6 @@ const fulfillmentText3 = {
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    const {firstName, phoneNumber ,address, age} = payload;
-    console.log('abhinav log: '+ firstName + address)
     if(payload.customerId === 'abhi'){
         res.send(fulfillmentText)
     } else if(payload.customerId === 'john') {
