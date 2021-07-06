@@ -84,7 +84,7 @@ app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
     if(payload.customerId === 'abhi'){
-        res.send(fulfillmentText)
+        res.send(fulfillmentText1)
     } else if(payload.customerId === 'john') {
         res.send(fulfillmentText2);
     } else {
