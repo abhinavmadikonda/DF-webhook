@@ -44,13 +44,37 @@ const responsePayload1 = {
 //     ]
 // }
 
-const fulfillmentText = {
-    "fulfillmentText": "testing both",
+const fulfillmentText1 = {
+    "fulfillmentText": "Balance is 4268",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "testing both"
+                    "Balance is 4268"
+                ]
+            }
+        }
+    ]
+}
+const fulfillmentText2 = {
+    "fulfillmentText": "Balance is 4268",
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    "Balance is 88888"
+                ]
+            }
+        }
+    ]
+}
+const fulfillmentText3 = {
+    "fulfillmentText": "Balance is 4268",
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    "Balance is 0"
                 ]
             }
         }
@@ -64,9 +88,9 @@ app.post('/webhooks', function (req, res) {
     if(payload.customerId === 'abhi'){
         res.send(fulfillmentText)
     } else if(payload.customerId === 'john') {
-        res.send(fulfillmentText);
+        res.send(fulfillmentText2);
     } else {
-        res.send(fulfillmentText);
+        res.send(fulfillmentText3);
     }
 });
 
