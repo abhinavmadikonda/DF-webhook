@@ -45,36 +45,36 @@ const responsePayload1 = {
 // }
 
 const fulfillmentText1 = {
-    "fulfillmentText": "Balance is 4268",
+    "fulfillmentText": "Hey Abhi! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "Balance is 4268"
+                    "Hey Abhi! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!"
                 ]
             }
         }
     ]
 }
 const fulfillmentText2 = {
-    "fulfillmentText": "Balance is 4268",
+    "fulfillmentText": "Interest rate is 10%",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "Balance is 88888"
+                    "Interest rate is 10%"
                 ]
             }
         }
     ]
 }
 const fulfillmentText3 = {
-    "fulfillmentText": "Balance is 4268",
+    "fulfillmentText": "Interest rate is 9%",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "Balance is 0"
+                    "Interest rate is 9%"
                 ]
             }
         }
@@ -83,9 +83,9 @@ const fulfillmentText3 = {
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    if(payload.customerId === 'abhi'){
+    if(payload.name.toLowerCase().equals("abhi")){
         res.send(fulfillmentText1)
-    } else if(payload.customerId === 'john') {
+    } else if(payload.name === 'venkat') {
         res.send(fulfillmentText2);
     } else {
         res.send(fulfillmentText3);
