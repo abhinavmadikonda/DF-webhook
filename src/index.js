@@ -83,7 +83,7 @@ const fulfillmentText3 = {
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    if(payload.name.toLowerCase().equals("abhi")){
+    if(payload.name === 'abhi'){
         res.send(fulfillmentText1)
     } else if(payload.name === 'venkat') {
         res.send(fulfillmentText2);
