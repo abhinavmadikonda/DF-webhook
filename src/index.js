@@ -45,30 +45,30 @@ const responsePayload1 = {
 // }
 
 const fulfillmentText1 = {
-    "fulfillmentText": "Hey Abhi! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!",
+    "fulfillmentText": "Hey abhinav! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "Hey Abhi! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!"
+                    "Hey abhinav! We've got a thrilling offer for you. The interest rate? Just 8%, which is 1% lower than traditional rates! Stay tuned for more exciting details!"
                 ]
             }
         }
     ]
 }
 const fulfillmentText2 = {
-    "fulfillmentText": "Interest rate is 10%",
+    "fulfillmentText": "Hey elon!, your interest rate is 10%",
     "fulfillmentMessages": [
         {
             "text": {
                 "text": [
-                    "Interest rate is 10%"
+                    "Hey elon!, your interest rate is 10%"
                 ]
             }
         }
     ]
 }
-const fulfillmentText3 = {
+const text = {
     "fulfillmentText": "Interest rate is 9%",
     "fulfillmentMessages": [
         {
@@ -80,15 +80,29 @@ const fulfillmentText3 = {
         }
     ]
 }
+function fulfillmentText3(name) {
+    return {
+        "fulfillmentText": `Hey ${name}! your interest rate is 9%`,
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        `Hey ${name}! your interest rate is 9%`
+                    ]
+                }
+            }
+        ]
+    }
+}
 app.post('/webhooks', function (req, res) {
     const { originalDetectIntentRequest: {payload} }  = req.body;
     console.log('webhook route invoked with payload:'+ JSON.stringify(req.body));
-    if(payload.name === 'abhi'){
+    if(payload.name === 'abhinav'){
         res.send(fulfillmentText1)
-    } else if(payload.name === 'venkat') {
+    } else if(payload.name === 'elon') {
         res.send(fulfillmentText2);
     } else {
-        res.send(fulfillmentText3);
+        res.send(fulfillmentText3(payload.name));
     }
 });
 
